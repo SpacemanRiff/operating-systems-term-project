@@ -38,6 +38,7 @@ public class Job{
     
     public void cycle(){
         time--;
+        status = Status.RUNNING;
     }
     
     public int getTime(){

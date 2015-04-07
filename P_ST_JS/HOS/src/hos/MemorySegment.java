@@ -24,6 +24,8 @@ public class MemorySegment {
     
     public void release(){
         inUse = false;
+        wastedSpace = size;
+        id = -1;
     }
     
     public boolean getState(){

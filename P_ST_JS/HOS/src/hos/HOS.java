@@ -2,15 +2,19 @@ package hos;
 
 public class HOS{
     private MemorySegment [] memorySegments;
-    public Job [] jobs;
-    private int currentTime;
+    public Job [] jobsCaseOne;
+    public Job [] jobsCaseTwo;
+    public Job [] jobsCaseThree;
+    public Job [] jobsCaseThreePlaceHolder;
     
     public HOS(){
-        currentTime = 0;
         
         int [] sizes = {32, 48, 24, 16, 64, 48, 32, 64, 48, 32};
         memorySegments = new MemorySegment[sizes.length];
-        jobs = new Job[20];
+        jobsCaseOne = new Job[20];
+        jobsCaseTwo = new Job[20];
+        jobsCaseThree = new Job[20];
+        jobsCaseThreePlaceHolder = new Job[20];
         
         for(int i = 0; i < memorySegments.length; i++){
             memorySegments[i] = new MemorySegment(sizes[i]);
@@ -20,15 +24,25 @@ public class HOS{
     }
     
     public void initJobs(){
-        for(int i = 0; i < jobs.length; i++){
-            jobs[i] = new Job(i, 16 + (int)(Math.random()*49), 2 + (int)(Math.random() * 9));
+        for(int i = 0; i < jobsCaseOne.length; i++){
+            int time = 16 + (int)(Math.random()*49);
+            int memory = 2 + (int)(Math.random() * 9);
+            jobsCaseOne[i] = new Job(i, time, memory);
+            jobsCaseTwo[i] = new Job(i, time, memory);
+            jobsCaseThree[i] = new Job(i, time, memory);
+            jobsCaseThreePlaceHolder[i] = jobsCaseThree[i];
         }
     }
     
-    public void firstFit(){
+    public void firstFit(Job [] jobs){
         for(int i = 0; i < jobs.length; i++){
             int j = 0;
             boolean added = jobs[i].getLocation() != -1;
+            if(jobs[i].getTime() <= 0 && jobs[i].getLocation()!= -1){
+                memorySegments[jobs[i].getLocation()].release();
+                jobs[i].setLocation(-1);
+                jobs[i].setStatus(Job.Status.FINISHED);
+            }
             while(j < memorySegments.length && !added && jobs[i].getTime() > 0){
                 if(!memorySegments[j].getState() && memorySegments[j].getSize() >= jobs[i].getMemory()){
                     memorySegments[j].use(jobs[i].getMemory(), jobs[i].getID());
@@ -41,9 +55,45 @@ public class HOS{
         }
     }
     
-    public void roundRobin(){
-        for(int i = 0; i < memorySegments.length; i++){
-            jobs[memorySegments[i].getID()].cycle();
+    //for case three
+    public static void sort (Job [] arrayName){
+        Job temp;
+        for (int i = 0; i < arrayName.length-1; i++)
+        {
+            if(arrayName[i].getTime() > arrayName[i+1].getTime())
+            {
+                temp=arrayName[i];
+                arrayName[i]=arrayName[i+1];
+                arrayName[i+1]=temp;
+                i=-1;
+            }
+        }
+    }
+    
+    public void roundRobin(Job [] jobs){        
+        for(int i = 0; i < 30; i++){
+            int count = 0; 
+            int j = 0;
+            while(count < 4 && j < jobs.length){
+                if(memorySegments[(j+(i*4))%memorySegments.length].getID()!=-1){
+                    if(jobs[memorySegments[(j+(i*4))%memorySegments.length].getID()].getStatus().equals("READY")){
+                        jobs[memorySegments[(j+(i*4))%memorySegments.length].getID()].cycle();
+                        count++;
+                    }
+                }
+                j++;
+            }
+            
+            firstFit(jobs);
+            printInformation(jobs, i + 1);
+            
+            for (int h=0; h < memorySegments.length;h++){   
+                if(memorySegments[h].getID()!=-1){                    
+                    if(jobs[memorySegments[h].getID()].getStatus().equals("RUNNING")){
+                        jobs[memorySegments[h].getID()].setStatus(Job.Status.READY);
+                    }
+                }  
+            }
         }
     }
     public void release(){
@@ -51,14 +101,14 @@ public class HOS{
             memorySegments[i].release();
     }
     
-    public void printInformation(){        
+    public void printInformation(Job [] jobs, int currentTime){        
         for(int i = 0; i < jobs.length; i++){
             System.out.printf("%2d %2d %2d %2d %2d %8s%n", currentTime, jobs[i].getID(), jobs[i].getLocation(), jobs[i].getMemory(), jobs[i].getTime(), jobs[i].getStatus());
         } 
         System.out.println();
     }
     
-    public void bestFit(){
+    public void bestFit(Job [] jobs){
         for(int i = 0; i < jobs.length; i++){
             int j = 0;
             int best=0;
@@ -73,45 +123,33 @@ public class HOS{
                 j++;
             }
             if(!memorySegments[best].getState() ){
-                    memorySegments[best].use(jobs[i].getMemory(), jobs[i].getID());
-                    
-                    jobs[i].setStatus(Job.Status.READY);
-                    jobs[i].setLocation(j);
-                }
+                memorySegments[best].use(jobs[i].getMemory(), jobs[i].getID());
+
+                jobs[i].setStatus(Job.Status.READY);
+                jobs[i].setLocation(j);
+            }
         }
     }
     
     public void caseOne(){
-        firstFit();
-        printInformation();
-        release();
-        
+        firstFit(jobsCaseOne);
+        printInformation(jobsCaseOne, 0);
+        roundRobin(jobsCaseOne);
+        release();        
     }
+    
     //i am not sure if this is working because it is the same as case one everytime but i think it should work wesley
     public void caseTwo(){
-        bestFit();
-        printInformation();
+        bestFit(jobsCaseTwo);
+        printInformation(jobsCaseTwo, 0);
         release();
     }
-    //for case three
-    public static void sort (Job [] arrayName){
-    Job temp;
-    for (int i = 0; i < arrayName.length-1; i++)
-    {
-        if(arrayName[i].getTime() > arrayName[i+1].getTime())
-        {
-            temp=arrayName[i];
-            arrayName[i]=arrayName[i+1];
-            arrayName[i+1]=temp;
-            i=-1;
-        }
-    }
-}
+    
     //this doesnt work quite right yet wesley
     public void caseThree(){
-        sort(jobs);
-        bestFit();
-        printInformation();
+        sort(jobsCaseThree);
+        bestFit(jobsCaseThree);
+        printInformation(jobsCaseThreePlaceHolder, 0);
         release();
         
     }
@@ -120,8 +158,8 @@ public class HOS{
         HOS hos = new HOS();    
         hos.caseOne();
         
-        hos.caseTwo();
+        //hos.caseTwo();
         
-        hos.caseThree();
+        //hos.caseThree();
     }
 }
