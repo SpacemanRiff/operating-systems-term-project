@@ -7,8 +7,7 @@ public class HOS{
     public Job [] jobsCaseThree;
     public Job [] jobsCaseThreePlaceHolder;
     
-    public HOS(){
-        
+    public HOS(){        
         int [] sizes = {32, 48, 24, 16, 64, 48, 32, 64, 48, 32};
         memorySegments = new MemorySegment[sizes.length];
         jobsCaseOne = new Job[20];
@@ -34,6 +33,19 @@ public class HOS{
         }
     }
     
+    //for case three
+    public static void sort (Job [] arrayName){
+        Job temp;
+        for (int i = 0; i < arrayName.length-1; i++){
+            if(arrayName[i].getTime() > arrayName[i+1].getTime()){
+                temp=arrayName[i];
+                arrayName[i]=arrayName[i+1];
+                arrayName[i+1]=temp;
+                i=-1;
+            }
+        }
+    }
+    
     public void firstFit(Job [] jobs){
         for(int i = 0; i < jobs.length; i++){
             int j = 0;
@@ -55,17 +67,25 @@ public class HOS{
         }
     }
     
-    //for case three
-    public static void sort (Job [] arrayName){
-        Job temp;
-        for (int i = 0; i < arrayName.length-1; i++)
-        {
-            if(arrayName[i].getTime() > arrayName[i+1].getTime())
-            {
-                temp=arrayName[i];
-                arrayName[i]=arrayName[i+1];
-                arrayName[i+1]=temp;
-                i=-1;
+    public void bestFit(Job [] jobs){
+        for(int i = 0; i < jobs.length; i++){
+            int j = 0;
+            int best=0;
+            int wasted=64;
+            memorySegments[best].use(jobs[i].getMemory(), jobs[i].getID());
+            boolean added = jobs[i].getLocation() != -1;
+            while(j < memorySegments.length && jobs[i].getTime() > 0){
+                memorySegments[j].use(jobs[i].getMemory(), jobs[i].getID());
+                if(memorySegments[j].getWastedSpace()>memorySegments[best].getWastedSpace()){
+                    best=j;
+                }
+                j++;
+            }
+            if(!memorySegments[best].getState() ){
+                memorySegments[best].use(jobs[i].getMemory(), jobs[i].getID());
+
+                jobs[i].setStatus(Job.Status.READY);
+                jobs[i].setLocation(j);
             }
         }
     }
@@ -96,39 +116,18 @@ public class HOS{
             }
         }
     }
-    public void release(){
-        for(int i=0; i<memorySegments.length;i++)
-            memorySegments[i].release();
-    }
     
     public void printInformation(Job [] jobs, int currentTime){        
+        System.out.printf("%6s %4s %10s %8s %11s %10s%n", "Tick", "ID", "Location", "Memory", "Time Left", "Status");
         for(int i = 0; i < jobs.length; i++){
-            System.out.printf("%2d %2d %2d %2d %2d %8s%n", currentTime, jobs[i].getID(), jobs[i].getLocation(), jobs[i].getMemory(), jobs[i].getTime(), jobs[i].getStatus());
+            System.out.printf("%6s %4s %10s %8s %11s %10s%n", currentTime, jobs[i].getID(), jobs[i].getLocation(), jobs[i].getMemory(), jobs[i].getTime(), jobs[i].getStatus());
         } 
         System.out.println();
     }
     
-    public void bestFit(Job [] jobs){
-        for(int i = 0; i < jobs.length; i++){
-            int j = 0;
-            int best=0;
-            int wasted=64;
-            memorySegments[best].use(jobs[i].getMemory(), jobs[i].getID());
-            boolean added = jobs[i].getLocation() != -1;
-            while(j < memorySegments.length && jobs[i].getTime() > 0){
-                memorySegments[j].use(jobs[i].getMemory(), jobs[i].getID());
-                if(memorySegments[j].getWastedSpace()>memorySegments[best].getWastedSpace()){
-                    best=j;
-                }
-                j++;
-            }
-            if(!memorySegments[best].getState() ){
-                memorySegments[best].use(jobs[i].getMemory(), jobs[i].getID());
-
-                jobs[i].setStatus(Job.Status.READY);
-                jobs[i].setLocation(j);
-            }
-        }
+    public void release(){
+        for(int i=0; i<memorySegments.length;i++)
+            memorySegments[i].release();
     }
     
     public void caseOne(){
@@ -150,16 +149,13 @@ public class HOS{
         sort(jobsCaseThree);
         bestFit(jobsCaseThree);
         printInformation(jobsCaseThreePlaceHolder, 0);
-        release();
-        
+        release();        
     }
     
     public static void main(String [] args){
         HOS hos = new HOS();    
-        hos.caseOne();
-        
-        //hos.caseTwo();
-        
+        hos.caseOne();        
+        //hos.caseTwo();        
         //hos.caseThree();
     }
 }
