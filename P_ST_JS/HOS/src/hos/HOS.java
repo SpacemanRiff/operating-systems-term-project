@@ -1,5 +1,9 @@
 package hos;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
 public class HOS{
     private MemorySegment [] memorySegments;
     public Job [] jobsCaseOne;
@@ -90,38 +94,46 @@ public class HOS{
         }
     }
     
-    public void roundRobin(Job [] jobs){        
-        for(int i = 0; i < 30; i++){
-            int count = 0; 
-            int j = 0;
-            while(count < 4 && j < jobs.length){
-                if(memorySegments[(j+(i*4))%memorySegments.length].getID()!=-1){
-                    if(jobs[memorySegments[(j+(i*4))%memorySegments.length].getID()].getStatus().equals("READY")){
-                        jobs[memorySegments[(j+(i*4))%memorySegments.length].getID()].cycle();
-                        count++;
+    public void roundRobin(Job [] jobs, File file){ 
+        try{
+            PrintWriter pw = new PrintWriter(file);
+            printInformation(jobsCaseOne, 0, pw);       
+            for(int i = 0; i < 30; i++){
+                int count = 0; 
+                int j = 0;
+                while(count < 4 && j < jobs.length){
+                    if(memorySegments[(j+(i*4))%memorySegments.length].getID()!=-1){
+                        if(jobs[memorySegments[(j+(i*4))%memorySegments.length].getID()].getStatus().equals("READY")){
+                            jobs[memorySegments[(j+(i*4))%memorySegments.length].getID()].cycle();
+                            count++;
+                        }
                     }
+                    j++;
                 }
-                j++;
+
+                firstFit(jobs);
+                printInformation(jobs, i + 1, pw);
+
+                for (int h=0; h < memorySegments.length;h++){   
+                    if(memorySegments[h].getID()!=-1){                    
+                        if(jobs[memorySegments[h].getID()].getStatus().equals("RUNNING")){
+                            jobs[memorySegments[h].getID()].setStatus(Job.Status.READY);
+                        }
+                    }  
+                }
             }
-            
-            firstFit(jobs);
-            printInformation(jobs, i + 1);
-            
-            for (int h=0; h < memorySegments.length;h++){   
-                if(memorySegments[h].getID()!=-1){                    
-                    if(jobs[memorySegments[h].getID()].getStatus().equals("RUNNING")){
-                        jobs[memorySegments[h].getID()].setStatus(Job.Status.READY);
-                    }
-                }  
-            }
-        }
+            pw.flush();
+        }catch(FileNotFoundException ex){}
     }
     
-    public void printInformation(Job [] jobs, int currentTime){        
+    public void printInformation(Job [] jobs, int currentTime, PrintWriter pw){  
         System.out.printf("%6s %4s %10s %8s %11s %10s%n", "Tick", "ID", "Location", "Memory", "Time Left", "Status");
+        pw.printf("%6s %4s %10s %8s %11s %10s%n", "Tick", "ID", "Location", "Memory", "Time Left", "Status");
         for(int i = 0; i < jobs.length; i++){
             System.out.printf("%6s %4s %10s %8s %11s %10s%n", currentTime, jobs[i].getID(), jobs[i].getLocation(), jobs[i].getMemory(), jobs[i].getTime(), jobs[i].getStatus());
+            pw.printf("%6s %4s %10s %8s %11s %10s%n", currentTime, jobs[i].getID(), jobs[i].getLocation(), jobs[i].getMemory(), jobs[i].getTime(), jobs[i].getStatus());
         } 
+        pw.println();
         System.out.println();
     }
     
@@ -131,24 +143,24 @@ public class HOS{
     }
     
     public void caseOne(){
+        File file = new File("caseone.txt");
         firstFit(jobsCaseOne);
-        printInformation(jobsCaseOne, 0);
-        roundRobin(jobsCaseOne);
+        roundRobin(jobsCaseOne, file);
         release();        
     }
     
     //i am not sure if this is working because it is the same as case one everytime but i think it should work wesley
     public void caseTwo(){
+        File file = new File("casetwo.txt");
         bestFit(jobsCaseTwo);
-        printInformation(jobsCaseTwo, 0);
         release();
     }
     
     //this doesnt work quite right yet wesley
     public void caseThree(){
+        File file = new File("casethree.txt");
         sort(jobsCaseThree);
         bestFit(jobsCaseThree);
-        printInformation(jobsCaseThreePlaceHolder, 0);
         release();        
     }
     
