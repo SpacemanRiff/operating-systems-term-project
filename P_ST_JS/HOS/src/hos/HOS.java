@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 public class HOS{
+    public enum FitTypes {FIRST, BEST};
     private MemorySegment [] memorySegments;
     public Job [] jobsCaseOne;
     public Job [] jobsCaseTwo;
@@ -72,32 +73,40 @@ public class HOS{
     }
     
     public void bestFit(Job [] jobs){
-        for(int i = 0; i < jobs.length; i++){
+        for(int i = 0; i < memorySegments.length; i++){
             int j = 0;
-            int best=0;
-            int wasted=64;
-            memorySegments[best].use(jobs[i].getMemory(), jobs[i].getID());
-            boolean added = jobs[i].getLocation() != -1;
-            while(j < memorySegments.length && jobs[i].getTime() > 0){
-                memorySegments[j].use(jobs[i].getMemory(), jobs[i].getID());
-                if(memorySegments[j].getWastedSpace()>memorySegments[best].getWastedSpace()){
-                    best=j;
+            if(memorySegments[i].getID() >= 0){
+                if(jobs[memorySegments[i].getID()].getTime() <= 0 && jobs[memorySegments[i].getID()].getLocation()!= -1){
+                    jobs[memorySegments[i].getID()].setLocation(-1);
+                    jobs[memorySegments[i].getID()].setStatus(Job.Status.FINISHED);
+                    memorySegments[i].release();
+                }
+            }
+            int jobID = -1;
+            int wastedSpace = memorySegments[i].getSize();
+            while(j < jobs.length){ 
+                if(!memorySegments[i].getState()){
+                    if(jobs[j].getLocation() == -1 && jobs[j].getTime() > 0){
+                        if(memorySegments[i].getSize() - jobs[j].getMemory() >= 0 && memorySegments[i].getSize() - jobs[j].getMemory() <= wastedSpace){
+                            jobID = j;
+                            wastedSpace = memorySegments[i].getSize() - jobs[j].getMemory();
+                        }
+                    }
                 }
                 j++;
             }
-            if(!memorySegments[best].getState() ){
-                memorySegments[best].use(jobs[i].getMemory(), jobs[i].getID());
-
-                jobs[i].setStatus(Job.Status.READY);
-                jobs[i].setLocation(j);
+            if(jobID >= 0){
+                memorySegments[i].use(jobs[jobID].getMemory(), jobID);
+                jobs[jobID].setStatus(Job.Status.READY);
+                jobs[jobID].setLocation(i);
             }
         }
     }
     
-    public void roundRobin(Job [] jobs, File file){ 
+    public void roundRobin(Job [] jobs, File file, FitTypes fitType, Job [] printJobs){ 
         try{
             PrintWriter pw = new PrintWriter(file);
-            printInformation(jobsCaseOne, 0, pw);       
+            printInformation(printJobs, 0, pw);
             for(int i = 0; i < 30; i++){
                 int count = 0; 
                 int j = 0;
@@ -110,9 +119,13 @@ public class HOS{
                     }
                     j++;
                 }
-
-                firstFit(jobs);
-                printInformation(jobs, i + 1, pw);
+                if(fitType == FitTypes.FIRST){
+                    firstFit(jobs);
+                }else{
+                    bestFit(jobs);
+                }
+                
+                printInformation(printJobs, i + 1, pw);
 
                 for (int h=0; h < memorySegments.length;h++){   
                     if(memorySegments[h].getID()!=-1){                    
@@ -133,8 +146,8 @@ public class HOS{
             System.out.printf("%6s %4s %10s %8s %11s %10s%n", currentTime, jobs[i].getID(), jobs[i].getLocation(), jobs[i].getMemory(), jobs[i].getTime(), jobs[i].getStatus());
             pw.printf("%6s %4s %10s %8s %11s %10s%n", currentTime, jobs[i].getID(), jobs[i].getLocation(), jobs[i].getMemory(), jobs[i].getTime(), jobs[i].getStatus());
         } 
-        pw.println();
         System.out.println();
+        pw.println();
     }
     
     public void release(){
@@ -143,31 +156,32 @@ public class HOS{
     }
     
     public void caseOne(){
-        File file = new File("caseone.txt");
+        File file = new File("src/output/case1.txt");
         firstFit(jobsCaseOne);
-        roundRobin(jobsCaseOne, file);
+        roundRobin(jobsCaseOne, file, FitTypes.FIRST, jobsCaseOne);
         release();        
     }
     
     //i am not sure if this is working because it is the same as case one everytime but i think it should work wesley
     public void caseTwo(){
-        File file = new File("casetwo.txt");
+        File file = new File("src/output/case2.txt");
         bestFit(jobsCaseTwo);
+        roundRobin(jobsCaseTwo, file, FitTypes.BEST, jobsCaseTwo);
         release();
     }
     
     //this doesnt work quite right yet wesley
     public void caseThree(){
-        File file = new File("casethree.txt");
+        File file = new File("src/output/case3.txt");
         sort(jobsCaseThree);
-        bestFit(jobsCaseThree);
+        roundRobin(jobsCaseThree, file, FitTypes.BEST, jobsCaseThreePlaceHolder);
         release();        
     }
     
     public static void main(String [] args){
         HOS hos = new HOS();    
         hos.caseOne();        
-        //hos.caseTwo();        
-        //hos.caseThree();
+        hos.caseTwo();        
+        hos.caseThree();
     }
 }
