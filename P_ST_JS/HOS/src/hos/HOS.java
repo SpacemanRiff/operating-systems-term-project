@@ -12,6 +12,7 @@ public class HOS{
     public Job [] jobsCaseThree;
     public Job [] jobsCaseThreePlaceHolder;
     
+    //initializes memory sizes and the number of jobs
     public HOS(){        
         int [] sizes = {32, 48, 24, 16, 64, 48, 32, 64, 48, 32};
         memorySegments = new MemorySegment[sizes.length];
@@ -27,6 +28,7 @@ public class HOS{
         initJobs();
     }
     
+    //sets up the jobs with the same random values
     public void initJobs(){
         for(int i = 0; i < jobsCaseOne.length; i++){
             int time = 16 + (int)(Math.random()*49);
@@ -38,7 +40,7 @@ public class HOS{
         }
     }
     
-    //for case three
+    //sorts the jobs into shortest job first
     public static void sort (Job [] arrayName){
         Job temp;
         for (int i = 0; i < arrayName.length-1; i++){
@@ -51,17 +53,22 @@ public class HOS{
         }
     }
     
+    //first fit memory allocation
     public void firstFit(Job [] jobs){
         for(int i = 0; i < jobs.length; i++){
             int j = 0;
-            boolean added = jobs[i].getLocation() != -1;
+            //removes jobs from memory
             if(jobs[i].getTime() <= 0 && jobs[i].getLocation()!= -1){
                 memorySegments[jobs[i].getLocation()].release();
                 jobs[i].setLocation(-1);
                 jobs[i].setStatus(Job.Status.FINISHED);
             }
+            //if the job's locatin is not -1. it's already in memory, so the loop doesn't run
+            boolean added = jobs[i].getLocation() != -1;
             while(j < memorySegments.length && !added && jobs[i].getTime() > 0){
+                //makes sure the memory slot isn't already allocated and that this job will fit
                 if(!memorySegments[j].getState() && memorySegments[j].getSize() >= jobs[i].getMemory()){
+                    //adds the job to memory and sets the job to ready
                     memorySegments[j].use(jobs[i].getMemory(), jobs[i].getID());
                     added = true;
                     jobs[i].setStatus(Job.Status.READY);
@@ -72,9 +79,12 @@ public class HOS{
         }
     }
     
+    //best fit memory allocation
     public void bestFit(Job [] jobs){
         for(int i = 0; i < memorySegments.length; i++){
             int j = 0;
+            
+            //removes finished jobs from memory
             if(memorySegments[i].getID() >= 0){
                 if(jobs[memorySegments[i].getID()].getTime() <= 0 && jobs[memorySegments[i].getID()].getLocation()!= -1){
                     jobs[memorySegments[i].getID()].setLocation(-1);
@@ -83,19 +93,30 @@ public class HOS{
                 }
             }
             int jobID = -1;
+            
+            //initializes wasted space to the maximum for this specific memory slot
             int wastedSpace = memorySegments[i].getSize();
-            while(j < jobs.length){ 
-                if(!memorySegments[i].getState()){
-                    if(jobs[j].getLocation() == -1 && jobs[j].getTime() > 0){
-                        if(memorySegments[i].getSize() - jobs[j].getMemory() >= 0 && memorySegments[i].getSize() - jobs[j].getMemory() <= wastedSpace){
-                            jobID = j;
-                            wastedSpace = memorySegments[i].getSize() - jobs[j].getMemory();
+            
+            //makes sure the memory isn't allocated already
+            if(!memorySegments[i].getState()){
+                //looks for a job with the lowest wasted space for this memory slot
+                while(j < jobs.length){ 
+                        //makes sure this job isn't already in a location, and that it isn't already done
+                        if(jobs[j].getLocation() == -1 && jobs[j].getTime() > 0){
+                            //checks to see if this job can fit, and if it has less wasted space than the current selected job
+                            if(memorySegments[i].getSize() - jobs[j].getMemory() >= 0 && memorySegments[i].getSize() - jobs[j].getMemory() <= wastedSpace){
+                                //sets the wasted space to how much this job wastes, and then replaces the currently selected job with this one
+                                jobID = j;
+                                wastedSpace = memorySegments[i].getSize() - jobs[j].getMemory();
+                            }
                         }
-                    }
+                    j++;
                 }
-                j++;
             }
+            
+            //if a job was selected
             if(jobID >= 0){
+                //set this job into memory and set it to ready
                 memorySegments[i].use(jobs[jobID].getMemory(), jobID);
                 jobs[jobID].setStatus(Job.Status.READY);
                 jobs[jobID].setLocation(i);
@@ -103,6 +124,7 @@ public class HOS{
         }
     }
     
+    //runs each memory section in order, 4 at a time
     public void roundRobin(Job [] jobs, File file, FitTypes fitType, Job [] printJobs){ 
         try{
             PrintWriter pw = new PrintWriter(file);
@@ -110,7 +132,7 @@ public class HOS{
             for(int i = 0; i < 30; i++){
                 int count = 0; 
                 int j = 0;
-                //finds 4 open memory locations
+                //finds 4 available memory locations to be added to the CPU
                 while(count < 4 && j < jobs.length){
                     if(memorySegments[(j+(i*4))%memorySegments.length].getID()!=-1){
                         if(jobs[memorySegments[(j+(i*4))%memorySegments.length].getID()].getStatus().equals("READY")){
@@ -120,14 +142,18 @@ public class HOS{
                     }
                     j++;
                 }
+                
+                //removes finished jobs, depending on which sort is supplied
                 if(fitType == FitTypes.FIRST){
                     firstFit(jobs);
                 }else{
                     bestFit(jobs);
                 }
                 
+                //prints jobs
                 printInformation(printJobs, i + 1, pw);
 
+                //sets all running jobs back to Ready
                 for (int h=0; h < memorySegments.length;h++){   
                     if(memorySegments[h].getID()!=-1){                    
                         if(jobs[memorySegments[h].getID()].getStatus().equals("RUNNING")){
