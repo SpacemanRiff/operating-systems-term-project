@@ -110,6 +110,7 @@ public class HOS{
             for(int i = 0; i < 30; i++){
                 int count = 0; 
                 int j = 0;
+                //finds 4 open memory locations
                 while(count < 4 && j < jobs.length){
                     if(memorySegments[(j+(i*4))%memorySegments.length].getID()!=-1){
                         if(jobs[memorySegments[(j+(i*4))%memorySegments.length].getID()].getStatus().equals("READY")){
@@ -139,22 +140,29 @@ public class HOS{
         }catch(FileNotFoundException ex){}
     }
     
+    //prints out all relevant information aobut each job, and writes it to a file
     public void printInformation(Job [] jobs, int currentTime, PrintWriter pw){  
-        System.out.printf("%6s %4s %10s %8s %11s %10s%n", "Tick", "ID", "Location", "Memory", "Time Left", "Status");
-        pw.printf("%6s %4s %10s %8s %11s %10s%n", "Tick", "ID", "Location", "Memory", "Time Left", "Status");
+        System.out.printf("%6s %4s %10s %8s %11s %10s %7s%n", "Tick", "ID", "Location", "Memory", "Time Left", "Status", "Wasted");
+        pw.printf("%6s %4s %10s %8s %11s %10s %7s%n", "Tick", "ID", "Location", "Memory", "Time Left", "Status", "Wasted");
         for(int i = 0; i < jobs.length; i++){
-            System.out.printf("%6s %4s %10s %8s %11s %10s%n", currentTime, jobs[i].getID(), jobs[i].getLocation(), jobs[i].getMemory(), jobs[i].getTime(), jobs[i].getStatus());
-            pw.printf("%6s %4s %10s %8s %11s %10s%n", currentTime, jobs[i].getID(), jobs[i].getLocation(), jobs[i].getMemory(), jobs[i].getTime(), jobs[i].getStatus());
+            String wastedSpace = "-";
+            if(jobs[i].getLocation() >= 0){
+                wastedSpace = memorySegments[jobs[i].getLocation()].getWastedSpace() + "";
+            }
+            System.out.printf("%6s %4s %10s %8s %11s %10s %7s%n", currentTime, jobs[i].getID(), jobs[i].getLocation(), jobs[i].getMemory(), jobs[i].getTime(), jobs[i].getStatus(), wastedSpace);
+            pw.printf("%6s %4s %10s %8s %11s %10s %7s%n", currentTime, jobs[i].getID(), jobs[i].getLocation(), jobs[i].getMemory(), jobs[i].getTime(), jobs[i].getStatus(), wastedSpace);
         } 
         System.out.println();
         pw.println();
     }
     
+    //cleans everything out from memory
     public void release(){
         for(int i=0; i<memorySegments.length;i++)
             memorySegments[i].release();
     }
     
+    //first in first out, first fit, round robin
     public void caseOne(){
         File file = new File("src/output/case1.txt");
         firstFit(jobsCaseOne);
@@ -162,7 +170,7 @@ public class HOS{
         release();        
     }
     
-    //i am not sure if this is working because it is the same as case one everytime but i think it should work wesley
+    //first in first out, best fit, round robin
     public void caseTwo(){
         File file = new File("src/output/case2.txt");
         bestFit(jobsCaseTwo);
@@ -170,7 +178,7 @@ public class HOS{
         release();
     }
     
-    //this doesnt work quite right yet wesley
+    //Shortest job first, best fit, round robin
     public void caseThree(){
         File file = new File("src/output/case3.txt");
         sort(jobsCaseThree);
