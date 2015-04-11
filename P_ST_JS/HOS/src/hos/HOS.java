@@ -174,6 +174,7 @@ public class HOS{
     public void caseThree(){
         File file = new File("src/output/case3.txt");
         sort(jobsCaseThree);
+        bestFit(jobsCaseThree);
         roundRobin(jobsCaseThree, file, FitTypes.BEST, jobsCaseThreePlaceHolder);
         release();        
     }
