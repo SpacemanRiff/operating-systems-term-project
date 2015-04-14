@@ -1,3 +1,8 @@
+/*
+*  Scott Troutman & James Schultz
+*  CS 350 Spring 2015 TR 2:30 - 4:00
+*/
+
 package hos;
 
 public class Job{
