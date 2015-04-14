@@ -1,4 +1,5 @@
   Tick   ID   Location   Memory   Time Left     Status  Wasted
+<<<<<<< Updated upstream
      0    0          4       54           9      READY      10
      0    1          0       25           9      READY       7
      0    2          7       57           7      READY       7
@@ -679,4 +680,686 @@
     30   17          4       37           3    RUNNING      27
     30   18          7       57           5    RUNNING       7
     30   19         -1       33           0   FINISHED       -
+=======
+     0    0          1       39           8      READY       9
+     0    1          0       17           8      READY      15
+     0    2          4       33           8      READY      31
+     0    3          2       17           8      READY       7
+     0    4          7       51           4      READY      13
+     0    5          5       40           4      READY       8
+     0    6         -1       59           7    WAITING       -
+     0    7         -1       63           6    WAITING       -
+     0    8          8       41           5      READY       7
+     0    9         -1       35           6    WAITING       -
+     0   10         -1       58           7    WAITING       -
+     0   11         -1       54           7    WAITING       -
+     0   12         -1       34          10    WAITING       -
+     0   13         -1       38           8    WAITING       -
+     0   14          6       31          10      READY       1
+     0   15         -1       46           5    WAITING       -
+     0   16         -1       39           8    WAITING       -
+     0   17         -1       38           2    WAITING       -
+     0   18         -1       40           5    WAITING       -
+     0   19          9       25           6      READY       7
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+     1    0          1       39           7    RUNNING       9
+     1    1          0       17           7    RUNNING      15
+     1    2          4       33           7    RUNNING      31
+     1    3          2       17           7    RUNNING       7
+     1    4          7       51           4      READY      13
+     1    5          5       40           4      READY       8
+     1    6         -1       59           7    WAITING       -
+     1    7         -1       63           6    WAITING       -
+     1    8          8       41           5      READY       7
+     1    9         -1       35           6    WAITING       -
+     1   10         -1       58           7    WAITING       -
+     1   11         -1       54           7    WAITING       -
+     1   12         -1       34          10    WAITING       -
+     1   13         -1       38           8    WAITING       -
+     1   14          6       31          10      READY       1
+     1   15         -1       46           5    WAITING       -
+     1   16         -1       39           8    WAITING       -
+     1   17         -1       38           2    WAITING       -
+     1   18         -1       40           5    WAITING       -
+     1   19          9       25           6      READY       7
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+     2    0          1       39           7      READY       9
+     2    1          0       17           7      READY      15
+     2    2          4       33           6    RUNNING      31
+     2    3          2       17           7      READY       7
+     2    4          7       51           3    RUNNING      13
+     2    5          5       40           3    RUNNING       8
+     2    6         -1       59           7    WAITING       -
+     2    7         -1       63           6    WAITING       -
+     2    8          8       41           5      READY       7
+     2    9         -1       35           6    WAITING       -
+     2   10         -1       58           7    WAITING       -
+     2   11         -1       54           7    WAITING       -
+     2   12         -1       34          10    WAITING       -
+     2   13         -1       38           8    WAITING       -
+     2   14          6       31           9    RUNNING       1
+     2   15         -1       46           5    WAITING       -
+     2   16         -1       39           8    WAITING       -
+     2   17         -1       38           2    WAITING       -
+     2   18         -1       40           5    WAITING       -
+     2   19          9       25           6      READY       7
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+     3    0          1       39           6    RUNNING       9
+     3    1          0       17           6    RUNNING      15
+     3    2          4       33           6      READY      31
+     3    3          2       17           7      READY       7
+     3    4          7       51           3      READY      13
+     3    5          5       40           3      READY       8
+     3    6         -1       59           7    WAITING       -
+     3    7         -1       63           6    WAITING       -
+     3    8          8       41           4    RUNNING       7
+     3    9         -1       35           6    WAITING       -
+     3   10         -1       58           7    WAITING       -
+     3   11         -1       54           7    WAITING       -
+     3   12         -1       34          10    WAITING       -
+     3   13         -1       38           8    WAITING       -
+     3   14          6       31           9      READY       1
+     3   15         -1       46           5    WAITING       -
+     3   16         -1       39           8    WAITING       -
+     3   17         -1       38           2    WAITING       -
+     3   18         -1       40           5    WAITING       -
+     3   19          9       25           5    RUNNING       7
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+     4    0          1       39           6      READY       9
+     4    1          0       17           6      READY      15
+     4    2          4       33           5    RUNNING      31
+     4    3          2       17           6    RUNNING       7
+     4    4          7       51           3      READY      13
+     4    5          5       40           2    RUNNING       8
+     4    6         -1       59           7    WAITING       -
+     4    7         -1       63           6    WAITING       -
+     4    8          8       41           4      READY       7
+     4    9         -1       35           6    WAITING       -
+     4   10         -1       58           7    WAITING       -
+     4   11         -1       54           7    WAITING       -
+     4   12         -1       34          10    WAITING       -
+     4   13         -1       38           8    WAITING       -
+     4   14          6       31           8    RUNNING       1
+     4   15         -1       46           5    WAITING       -
+     4   16         -1       39           8    WAITING       -
+     4   17         -1       38           2    WAITING       -
+     4   18         -1       40           5    WAITING       -
+     4   19          9       25           5      READY       7
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+     5    0          1       39           6      READY       9
+     5    1          0       17           6      READY      15
+     5    2          4       33           5      READY      31
+     5    3          2       17           6      READY       7
+     5    4          7       51           2    RUNNING      13
+     5    5          5       40           2      READY       8
+     5    6         -1       59           7    WAITING       -
+     5    7         -1       63           6    WAITING       -
+     5    8          8       41           3    RUNNING       7
+     5    9         -1       35           6    WAITING       -
+     5   10         -1       58           7    WAITING       -
+     5   11         -1       54           7    WAITING       -
+     5   12         -1       34          10    WAITING       -
+     5   13         -1       38           8    WAITING       -
+     5   14          6       31           7    RUNNING       1
+     5   15         -1       46           5    WAITING       -
+     5   16         -1       39           8    WAITING       -
+     5   17         -1       38           2    WAITING       -
+     5   18         -1       40           5    WAITING       -
+     5   19          9       25           4    RUNNING       7
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+     6    0          1       39           5    RUNNING       9
+     6    1          0       17           5    RUNNING      15
+     6    2          4       33           4    RUNNING      31
+     6    3          2       17           5    RUNNING       7
+     6    4          7       51           2      READY      13
+     6    5          5       40           2      READY       8
+     6    6         -1       59           7    WAITING       -
+     6    7         -1       63           6    WAITING       -
+     6    8          8       41           3      READY       7
+     6    9         -1       35           6    WAITING       -
+     6   10         -1       58           7    WAITING       -
+     6   11         -1       54           7    WAITING       -
+     6   12         -1       34          10    WAITING       -
+     6   13         -1       38           8    WAITING       -
+     6   14          6       31           7      READY       1
+     6   15         -1       46           5    WAITING       -
+     6   16         -1       39           8    WAITING       -
+     6   17         -1       38           2    WAITING       -
+     6   18         -1       40           5    WAITING       -
+     6   19          9       25           4      READY       7
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+     7    0          1       39           5      READY       9
+     7    1          0       17           5      READY      15
+     7    2          4       33           3    RUNNING      31
+     7    3          2       17           5      READY       7
+     7    4          7       51           1    RUNNING      13
+     7    5          5       40           1    RUNNING       8
+     7    6         -1       59           7    WAITING       -
+     7    7         -1       63           6    WAITING       -
+     7    8          8       41           3      READY       7
+     7    9         -1       35           6    WAITING       -
+     7   10         -1       58           7    WAITING       -
+     7   11         -1       54           7    WAITING       -
+     7   12         -1       34          10    WAITING       -
+     7   13         -1       38           8    WAITING       -
+     7   14          6       31           6    RUNNING       1
+     7   15         -1       46           5    WAITING       -
+     7   16         -1       39           8    WAITING       -
+     7   17         -1       38           2    WAITING       -
+     7   18         -1       40           5    WAITING       -
+     7   19          9       25           4      READY       7
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+     8    0          1       39           4    RUNNING       9
+     8    1          0       17           4    RUNNING      15
+     8    2          4       33           3      READY      31
+     8    3          2       17           5      READY       7
+     8    4          7       51           1      READY      13
+     8    5          5       40           1      READY       8
+     8    6         -1       59           7    WAITING       -
+     8    7         -1       63           6    WAITING       -
+     8    8          8       41           2    RUNNING       7
+     8    9         -1       35           6    WAITING       -
+     8   10         -1       58           7    WAITING       -
+     8   11         -1       54           7    WAITING       -
+     8   12         -1       34          10    WAITING       -
+     8   13         -1       38           8    WAITING       -
+     8   14          6       31           6      READY       1
+     8   15         -1       46           5    WAITING       -
+     8   16         -1       39           8    WAITING       -
+     8   17         -1       38           2    WAITING       -
+     8   18         -1       40           5    WAITING       -
+     8   19          9       25           3    RUNNING       7
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+     9    0          1       39           4      READY       9
+     9    1          0       17           4      READY      15
+     9    2          4       33           2    RUNNING      31
+     9    3          2       17           4    RUNNING       7
+     9    4          7       51           1      READY      13
+     9    5         -1       40           0   FINISHED       -
+     9    6         -1       59           7    WAITING       -
+     9    7         -1       63           6    WAITING       -
+     9    8          8       41           2      READY       7
+     9    9          5       35           6      READY      13
+     9   10         -1       58           7    WAITING       -
+     9   11         -1       54           7    WAITING       -
+     9   12         -1       34          10    WAITING       -
+     9   13         -1       38           8    WAITING       -
+     9   14          6       31           5    RUNNING       1
+     9   15         -1       46           5    WAITING       -
+     9   16         -1       39           8    WAITING       -
+     9   17         -1       38           2    WAITING       -
+     9   18         -1       40           5    WAITING       -
+     9   19          9       25           3      READY       7
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+    10    0          1       39           4      READY       9
+    10    1          0       17           4      READY      15
+    10    2          4       33           2      READY      31
+    10    3          2       17           4      READY       7
+    10    4         -1       51           0   FINISHED       -
+    10    5         -1       40           0   FINISHED       -
+    10    6          7       59           7      READY       5
+    10    7         -1       63           6    WAITING       -
+    10    8          8       41           1    RUNNING       7
+    10    9          5       35           6      READY      13
+    10   10         -1       58           7    WAITING       -
+    10   11         -1       54           7    WAITING       -
+    10   12         -1       34          10    WAITING       -
+    10   13         -1       38           8    WAITING       -
+    10   14          6       31           4    RUNNING       1
+    10   15         -1       46           5    WAITING       -
+    10   16         -1       39           8    WAITING       -
+    10   17         -1       38           2    WAITING       -
+    10   18         -1       40           5    WAITING       -
+    10   19          9       25           2    RUNNING       7
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+    11    0          1       39           3    RUNNING       9
+    11    1          0       17           3    RUNNING      15
+    11    2          4       33           1    RUNNING      31
+    11    3          2       17           3    RUNNING       7
+    11    4         -1       51           0   FINISHED       -
+    11    5         -1       40           0   FINISHED       -
+    11    6          7       59           7      READY       5
+    11    7         -1       63           6    WAITING       -
+    11    8          8       41           1      READY       7
+    11    9          5       35           6      READY      13
+    11   10         -1       58           7    WAITING       -
+    11   11         -1       54           7    WAITING       -
+    11   12         -1       34          10    WAITING       -
+    11   13         -1       38           8    WAITING       -
+    11   14          6       31           4      READY       1
+    11   15         -1       46           5    WAITING       -
+    11   16         -1       39           8    WAITING       -
+    11   17         -1       38           2    WAITING       -
+    11   18         -1       40           5    WAITING       -
+    11   19          9       25           2      READY       7
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+    12    0          1       39           3      READY       9
+    12    1          0       17           3      READY      15
+    12    2         -1       33           0   FINISHED       -
+    12    3          2       17           3      READY       7
+    12    4         -1       51           0   FINISHED       -
+    12    5         -1       40           0   FINISHED       -
+    12    6          7       59           6    RUNNING       5
+    12    7          4       63           6      READY       1
+    12    8          8       41           1      READY       7
+    12    9          5       35           5    RUNNING      13
+    12   10         -1       58           7    WAITING       -
+    12   11         -1       54           7    WAITING       -
+    12   12         -1       34          10    WAITING       -
+    12   13         -1       38           8    WAITING       -
+    12   14          6       31           3    RUNNING       1
+    12   15         -1       46           5    WAITING       -
+    12   16         -1       39           8    WAITING       -
+    12   17         -1       38           2    WAITING       -
+    12   18         -1       40           5    WAITING       -
+    12   19          9       25           2      READY       7
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+    13    0          1       39           2    RUNNING       9
+    13    1          0       17           2    RUNNING      15
+    13    2         -1       33           0   FINISHED       -
+    13    3          2       17           3      READY       7
+    13    4         -1       51           0   FINISHED       -
+    13    5         -1       40           0   FINISHED       -
+    13    6          7       59           6      READY       5
+    13    7          4       63           6      READY       1
+    13    8         -1       41           0   FINISHED       -
+    13    9          5       35           5      READY      13
+    13   10         -1       58           7    WAITING       -
+    13   11         -1       54           7    WAITING       -
+    13   12          8       34          10      READY      14
+    13   13         -1       38           8    WAITING       -
+    13   14          6       31           3      READY       1
+    13   15         -1       46           5    WAITING       -
+    13   16         -1       39           8    WAITING       -
+    13   17         -1       38           2    WAITING       -
+    13   18         -1       40           5    WAITING       -
+    13   19          9       25           1    RUNNING       7
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+    14    0          1       39           2      READY       9
+    14    1          0       17           2      READY      15
+    14    2         -1       33           0   FINISHED       -
+    14    3          2       17           2    RUNNING       7
+    14    4         -1       51           0   FINISHED       -
+    14    5         -1       40           0   FINISHED       -
+    14    6          7       59           6      READY       5
+    14    7          4       63           5    RUNNING       1
+    14    8         -1       41           0   FINISHED       -
+    14    9          5       35           4    RUNNING      13
+    14   10         -1       58           7    WAITING       -
+    14   11         -1       54           7    WAITING       -
+    14   12          8       34          10      READY      14
+    14   13         -1       38           8    WAITING       -
+    14   14          6       31           2    RUNNING       1
+    14   15         -1       46           5    WAITING       -
+    14   16         -1       39           8    WAITING       -
+    14   17         -1       38           2    WAITING       -
+    14   18         -1       40           5    WAITING       -
+    14   19          9       25           1      READY       7
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+    15    0          1       39           2      READY       9
+    15    1          0       17           2      READY      15
+    15    2         -1       33           0   FINISHED       -
+    15    3          2       17           2      READY       7
+    15    4         -1       51           0   FINISHED       -
+    15    5         -1       40           0   FINISHED       -
+    15    6          7       59           5    RUNNING       5
+    15    7          4       63           5      READY       1
+    15    8         -1       41           0   FINISHED       -
+    15    9          5       35           4      READY      13
+    15   10         -1       58           7    WAITING       -
+    15   11         -1       54           7    WAITING       -
+    15   12          8       34           9    RUNNING      14
+    15   13         -1       38           8    WAITING       -
+    15   14          6       31           1    RUNNING       1
+    15   15         -1       46           5    WAITING       -
+    15   16         -1       39           8    WAITING       -
+    15   17         -1       38           2    WAITING       -
+    15   18         -1       40           5    WAITING       -
+    15   19         -1       25           0   FINISHED       -
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+    16    0          1       39           1    RUNNING       9
+    16    1          0       17           1    RUNNING      15
+    16    2         -1       33           0   FINISHED       -
+    16    3          2       17           1    RUNNING       7
+    16    4         -1       51           0   FINISHED       -
+    16    5         -1       40           0   FINISHED       -
+    16    6          7       59           5      READY       5
+    16    7          4       63           4    RUNNING       1
+    16    8         -1       41           0   FINISHED       -
+    16    9          5       35           4      READY      13
+    16   10         -1       58           7    WAITING       -
+    16   11         -1       54           7    WAITING       -
+    16   12          8       34           9      READY      14
+    16   13         -1       38           8    WAITING       -
+    16   14          6       31           1      READY       1
+    16   15         -1       46           5    WAITING       -
+    16   16         -1       39           8    WAITING       -
+    16   17         -1       38           2    WAITING       -
+    16   18         -1       40           5    WAITING       -
+    16   19         -1       25           0   FINISHED       -
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+    17    0          1       39           1      READY       9
+    17    1          0       17           1      READY      15
+    17    2         -1       33           0   FINISHED       -
+    17    3          2       17           1      READY       7
+    17    4         -1       51           0   FINISHED       -
+    17    5         -1       40           0   FINISHED       -
+    17    6          7       59           4    RUNNING       5
+    17    7          4       63           3    RUNNING       1
+    17    8         -1       41           0   FINISHED       -
+    17    9          5       35           3    RUNNING      13
+    17   10         -1       58           7    WAITING       -
+    17   11         -1       54           7    WAITING       -
+    17   12          8       34           9      READY      14
+    17   13         -1       38           8    WAITING       -
+    17   14         -1       31           0   FINISHED       -
+    17   15         -1       46           5    WAITING       -
+    17   16         -1       39           8    WAITING       -
+    17   17         -1       38           2    WAITING       -
+    17   18         -1       40           5    WAITING       -
+    17   19         -1       25           0   FINISHED       -
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+    18    0         -1       39           0   FINISHED       -
+    18    1         -1       17           0   FINISHED       -
+    18    2         -1       33           0   FINISHED       -
+    18    3         -1       17           0   FINISHED       -
+    18    4         -1       51           0   FINISHED       -
+    18    5         -1       40           0   FINISHED       -
+    18    6          7       59           4      READY       5
+    18    7          4       63           3      READY       1
+    18    8         -1       41           0   FINISHED       -
+    18    9          5       35           3      READY      13
+    18   10         -1       58           7    WAITING       -
+    18   11         -1       54           7    WAITING       -
+    18   12          8       34           8    RUNNING      14
+    18   13          1       38           8      READY      10
+    18   14         -1       31           0   FINISHED       -
+    18   15         -1       46           5    WAITING       -
+    18   16         -1       39           8    WAITING       -
+    18   17         -1       38           2    WAITING       -
+    18   18         -1       40           5    WAITING       -
+    18   19         -1       25           0   FINISHED       -
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+    19    0         -1       39           0   FINISHED       -
+    19    1         -1       17           0   FINISHED       -
+    19    2         -1       33           0   FINISHED       -
+    19    3         -1       17           0   FINISHED       -
+    19    4         -1       51           0   FINISHED       -
+    19    5         -1       40           0   FINISHED       -
+    19    6          7       59           3    RUNNING       5
+    19    7          4       63           2    RUNNING       1
+    19    8         -1       41           0   FINISHED       -
+    19    9          5       35           2    RUNNING      13
+    19   10         -1       58           7    WAITING       -
+    19   11         -1       54           7    WAITING       -
+    19   12          8       34           7    RUNNING      14
+    19   13          1       38           8      READY      10
+    19   14         -1       31           0   FINISHED       -
+    19   15         -1       46           5    WAITING       -
+    19   16         -1       39           8    WAITING       -
+    19   17         -1       38           2    WAITING       -
+    19   18         -1       40           5    WAITING       -
+    19   19         -1       25           0   FINISHED       -
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+    20    0         -1       39           0   FINISHED       -
+    20    1         -1       17           0   FINISHED       -
+    20    2         -1       33           0   FINISHED       -
+    20    3         -1       17           0   FINISHED       -
+    20    4         -1       51           0   FINISHED       -
+    20    5         -1       40           0   FINISHED       -
+    20    6          7       59           2    RUNNING       5
+    20    7          4       63           1    RUNNING       1
+    20    8         -1       41           0   FINISHED       -
+    20    9          5       35           2      READY      13
+    20   10         -1       58           7    WAITING       -
+    20   11         -1       54           7    WAITING       -
+    20   12          8       34           6    RUNNING      14
+    20   13          1       38           7    RUNNING      10
+    20   14         -1       31           0   FINISHED       -
+    20   15         -1       46           5    WAITING       -
+    20   16         -1       39           8    WAITING       -
+    20   17         -1       38           2    WAITING       -
+    20   18         -1       40           5    WAITING       -
+    20   19         -1       25           0   FINISHED       -
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+    21    0         -1       39           0   FINISHED       -
+    21    1         -1       17           0   FINISHED       -
+    21    2         -1       33           0   FINISHED       -
+    21    3         -1       17           0   FINISHED       -
+    21    4         -1       51           0   FINISHED       -
+    21    5         -1       40           0   FINISHED       -
+    21    6          7       59           1    RUNNING       5
+    21    7         -1       63           0   FINISHED       -
+    21    8         -1       41           0   FINISHED       -
+    21    9          5       35           1    RUNNING      13
+    21   10          4       58           7      READY       6
+    21   11         -1       54           7    WAITING       -
+    21   12          8       34           6      READY      14
+    21   13          1       38           6    RUNNING      10
+    21   14         -1       31           0   FINISHED       -
+    21   15         -1       46           5    WAITING       -
+    21   16         -1       39           8    WAITING       -
+    21   17         -1       38           2    WAITING       -
+    21   18         -1       40           5    WAITING       -
+    21   19         -1       25           0   FINISHED       -
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+    22    0         -1       39           0   FINISHED       -
+    22    1         -1       17           0   FINISHED       -
+    22    2         -1       33           0   FINISHED       -
+    22    3         -1       17           0   FINISHED       -
+    22    4         -1       51           0   FINISHED       -
+    22    5         -1       40           0   FINISHED       -
+    22    6         -1       59           0   FINISHED       -
+    22    7         -1       63           0   FINISHED       -
+    22    8         -1       41           0   FINISHED       -
+    22    9         -1       35           0   FINISHED       -
+    22   10          4       58           6    RUNNING       6
+    22   11          7       54           7      READY      10
+    22   12          8       34           5    RUNNING      14
+    22   13          1       38           6      READY      10
+    22   14         -1       31           0   FINISHED       -
+    22   15          5       46           5      READY       2
+    22   16         -1       39           8    WAITING       -
+    22   17         -1       38           2    WAITING       -
+    22   18         -1       40           5    WAITING       -
+    22   19         -1       25           0   FINISHED       -
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+    23    0         -1       39           0   FINISHED       -
+    23    1         -1       17           0   FINISHED       -
+    23    2         -1       33           0   FINISHED       -
+    23    3         -1       17           0   FINISHED       -
+    23    4         -1       51           0   FINISHED       -
+    23    5         -1       40           0   FINISHED       -
+    23    6         -1       59           0   FINISHED       -
+    23    7         -1       63           0   FINISHED       -
+    23    8         -1       41           0   FINISHED       -
+    23    9         -1       35           0   FINISHED       -
+    23   10          4       58           5    RUNNING       6
+    23   11          7       54           7      READY      10
+    23   12          8       34           4    RUNNING      14
+    23   13          1       38           5    RUNNING      10
+    23   14         -1       31           0   FINISHED       -
+    23   15          5       46           4    RUNNING       2
+    23   16         -1       39           8    WAITING       -
+    23   17         -1       38           2    WAITING       -
+    23   18         -1       40           5    WAITING       -
+    23   19         -1       25           0   FINISHED       -
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+    24    0         -1       39           0   FINISHED       -
+    24    1         -1       17           0   FINISHED       -
+    24    2         -1       33           0   FINISHED       -
+    24    3         -1       17           0   FINISHED       -
+    24    4         -1       51           0   FINISHED       -
+    24    5         -1       40           0   FINISHED       -
+    24    6         -1       59           0   FINISHED       -
+    24    7         -1       63           0   FINISHED       -
+    24    8         -1       41           0   FINISHED       -
+    24    9         -1       35           0   FINISHED       -
+    24   10          4       58           4    RUNNING       6
+    24   11          7       54           6    RUNNING      10
+    24   12          8       34           3    RUNNING      14
+    24   13          1       38           5      READY      10
+    24   14         -1       31           0   FINISHED       -
+    24   15          5       46           3    RUNNING       2
+    24   16         -1       39           8    WAITING       -
+    24   17         -1       38           2    WAITING       -
+    24   18         -1       40           5    WAITING       -
+    24   19         -1       25           0   FINISHED       -
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+    25    0         -1       39           0   FINISHED       -
+    25    1         -1       17           0   FINISHED       -
+    25    2         -1       33           0   FINISHED       -
+    25    3         -1       17           0   FINISHED       -
+    25    4         -1       51           0   FINISHED       -
+    25    5         -1       40           0   FINISHED       -
+    25    6         -1       59           0   FINISHED       -
+    25    7         -1       63           0   FINISHED       -
+    25    8         -1       41           0   FINISHED       -
+    25    9         -1       35           0   FINISHED       -
+    25   10          4       58           3    RUNNING       6
+    25   11          7       54           5    RUNNING      10
+    25   12          8       34           2    RUNNING      14
+    25   13          1       38           4    RUNNING      10
+    25   14         -1       31           0   FINISHED       -
+    25   15          5       46           3      READY       2
+    25   16         -1       39           8    WAITING       -
+    25   17         -1       38           2    WAITING       -
+    25   18         -1       40           5    WAITING       -
+    25   19         -1       25           0   FINISHED       -
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+    26    0         -1       39           0   FINISHED       -
+    26    1         -1       17           0   FINISHED       -
+    26    2         -1       33           0   FINISHED       -
+    26    3         -1       17           0   FINISHED       -
+    26    4         -1       51           0   FINISHED       -
+    26    5         -1       40           0   FINISHED       -
+    26    6         -1       59           0   FINISHED       -
+    26    7         -1       63           0   FINISHED       -
+    26    8         -1       41           0   FINISHED       -
+    26    9         -1       35           0   FINISHED       -
+    26   10          4       58           2    RUNNING       6
+    26   11          7       54           4    RUNNING      10
+    26   12          8       34           2      READY      14
+    26   13          1       38           3    RUNNING      10
+    26   14         -1       31           0   FINISHED       -
+    26   15          5       46           2    RUNNING       2
+    26   16         -1       39           8    WAITING       -
+    26   17         -1       38           2    WAITING       -
+    26   18         -1       40           5    WAITING       -
+    26   19         -1       25           0   FINISHED       -
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+    27    0         -1       39           0   FINISHED       -
+    27    1         -1       17           0   FINISHED       -
+    27    2         -1       33           0   FINISHED       -
+    27    3         -1       17           0   FINISHED       -
+    27    4         -1       51           0   FINISHED       -
+    27    5         -1       40           0   FINISHED       -
+    27    6         -1       59           0   FINISHED       -
+    27    7         -1       63           0   FINISHED       -
+    27    8         -1       41           0   FINISHED       -
+    27    9         -1       35           0   FINISHED       -
+    27   10          4       58           1    RUNNING       6
+    27   11          7       54           3    RUNNING      10
+    27   12          8       34           1    RUNNING      14
+    27   13          1       38           3      READY      10
+    27   14         -1       31           0   FINISHED       -
+    27   15          5       46           1    RUNNING       2
+    27   16         -1       39           8    WAITING       -
+    27   17         -1       38           2    WAITING       -
+    27   18         -1       40           5    WAITING       -
+    27   19         -1       25           0   FINISHED       -
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+    28    0         -1       39           0   FINISHED       -
+    28    1         -1       17           0   FINISHED       -
+    28    2         -1       33           0   FINISHED       -
+    28    3         -1       17           0   FINISHED       -
+    28    4         -1       51           0   FINISHED       -
+    28    5         -1       40           0   FINISHED       -
+    28    6         -1       59           0   FINISHED       -
+    28    7         -1       63           0   FINISHED       -
+    28    8         -1       41           0   FINISHED       -
+    28    9         -1       35           0   FINISHED       -
+    28   10         -1       58           0   FINISHED       -
+    28   11          7       54           3      READY      10
+    28   12         -1       34           0   FINISHED       -
+    28   13          1       38           2    RUNNING      10
+    28   14         -1       31           0   FINISHED       -
+    28   15         -1       46           0   FINISHED       -
+    28   16          4       39           8      READY      25
+    28   17          5       38           2      READY      10
+    28   18          8       40           5      READY       8
+    28   19         -1       25           0   FINISHED       -
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+    29    0         -1       39           0   FINISHED       -
+    29    1         -1       17           0   FINISHED       -
+    29    2         -1       33           0   FINISHED       -
+    29    3         -1       17           0   FINISHED       -
+    29    4         -1       51           0   FINISHED       -
+    29    5         -1       40           0   FINISHED       -
+    29    6         -1       59           0   FINISHED       -
+    29    7         -1       63           0   FINISHED       -
+    29    8         -1       41           0   FINISHED       -
+    29    9         -1       35           0   FINISHED       -
+    29   10         -1       58           0   FINISHED       -
+    29   11          7       54           2    RUNNING      10
+    29   12         -1       34           0   FINISHED       -
+    29   13          1       38           2      READY      10
+    29   14         -1       31           0   FINISHED       -
+    29   15         -1       46           0   FINISHED       -
+    29   16          4       39           7    RUNNING      25
+    29   17          5       38           1    RUNNING      10
+    29   18          8       40           4    RUNNING       8
+    29   19         -1       25           0   FINISHED       -
+
+  Tick   ID   Location   Memory   Time Left     Status  Wasted
+    30    0         -1       39           0   FINISHED       -
+    30    1         -1       17           0   FINISHED       -
+    30    2         -1       33           0   FINISHED       -
+    30    3         -1       17           0   FINISHED       -
+    30    4         -1       51           0   FINISHED       -
+    30    5         -1       40           0   FINISHED       -
+    30    6         -1       59           0   FINISHED       -
+    30    7         -1       63           0   FINISHED       -
+    30    8         -1       41           0   FINISHED       -
+    30    9         -1       35           0   FINISHED       -
+    30   10         -1       58           0   FINISHED       -
+    30   11          7       54           1    RUNNING      10
+    30   12         -1       34           0   FINISHED       -
+    30   13          1       38           1    RUNNING      10
+    30   14         -1       31           0   FINISHED       -
+    30   15         -1       46           0   FINISHED       -
+    30   16          4       39           6    RUNNING      25
+    30   17          5       38           1      READY      10
+    30   18          8       40           3    RUNNING       8
+    30   19         -1       25           0   FINISHED       -
+>>>>>>> Stashed changes
 
